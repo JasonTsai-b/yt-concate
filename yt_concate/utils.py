@@ -21,13 +21,10 @@ class Utils:
         path = self.get_video_list_filepath(channel_id)
         return os.path.exists(path) and os.path.getsize(path) > 0
 
-    @staticmethod  # can ignore "self"
-    def get_video_id_from_url(url):
-        return url.split("watch?v=")[-1]  # split開後取後半部
+    def caption_file_exists(self, yt):
+        filepath = yt.cation_filepath
+        return os.path.exists(filepath) and os.path.getsize(filepath) > 0
 
-    def get_captions_filepath(self, url):
-        return os.path.join(CAPTIONS_DIR, self.get_video_id_from_url(url) + ".txt")
-
-    def caption_file_exists(self, url):
-        path = self.get_captions_filepath(url)
-        return os.path.exists(path) and os.path.getsize(path) > 0
+    def video_file_exists(self, yt):
+        filepath = yt.video_filepath
+        return os.path.exists(filepath) and os.path.getsize(filepath) > 0
